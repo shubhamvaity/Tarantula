@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tarantula | Exploring the uncharted territories of the web!</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="description" content="A swift web crawler">
+	<meta name="keywords" content="Tarantula,Search Engine,Web Crawler">
+	<meta name="author" content="H3M3N N4IK AND SHUBHAM VAITY">
+	<meta name="theme-color" content="#1b5e20 ">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="icon" type="image/png" href="static/images/logo-landing.gif" sizes="32x32" />
+	<link href="https://fonts.googleapis.com/css?family=Titillium+Web|Product+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+	<link rel="stylesheet" type="text/css" href="static/css/style.css">
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+	<div class="wrapper">
+
+		<div class="header">
+			<div class="headerContent">
+				
+				<div class="logoContainer">
+					<a href="/">
+					<img style="content: url(static/images/logo-text.png);">
+					</a>
+				</div>
+				<div class="searchContainer">
+					<form action="/search" method="get">
+						<div class="searchBarContainer">
+							<input type="hidden" name="type" value="{{type1}}">
+							<input class="searchbox" style=" position: relative;top: -49%;border-bottom: none;
+box-shadow: none;" type="text" name="term" value="{{term}}">
+							<button class="searchButton"><img class='searchButtonImg' src="static/images/icons/search.png"></button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="tabsContainer">
+			<ul class="tabList">
+				<li class='{% if type1 == "web" %}active{% else %}{% endif %}'>
+					<a href='/search?term={{term}}&type=web'><i class="material-icons left">public</i>Web</a>
+				</li>
+				<li class='{% if type1 == "images" %}active{% else %}{% endif %}'>
+					<a href='/search?term={{term}}&type=images'><i class="material-icons left">photo_library</i>Images</a>
+				</li>
+				<li class='{% if type1 == "torrents" %}active{% else %}{% endif %}'>
+					<a href='/search?term={{term}}&type=torrents'><i class="material-icons left">file_download</i>Torrents</a>
+				</li>
+			</ul>
+			</div>
+				<div class='wave -one'></div>
+  				<div class='wave -two'></div>
+  				<div class='wave -three'></div>
+		</div>
+		
+		<div class="mainResultsSection">
+			{% if type1 == "web" %}
+			<div id='particles-js' style='position: absolute;width: 100%;height: 100%;z-index: -1;'>
+			</div>
+			{% else %}
+			{% endif %}
+			{% if numResults != 0 %}
+			<div class='resultsCount'>About {{numResults}} results found in {{searchTime}} seconds. </div>
+			{% endif %}
+			{% if type1 == "web" %} {{ resultsHtml | safe}}
+			{% endif %}
+			{% if type1 == "images" %}
+			{% if numResults == 0 %}
+			<div class='imageResults'>
+				<p> Your search - <em><b>{{term}}</b></em> - did not match any images.  </p>   <p style='margin-top:1em'><b>Suggestions:</b></p> 
+				<ul style='margin-left:1.3em;margin-bottom:2em'>
+					<li>Make sure that all words are spelled correctly.</li>
+					<li>Try different keywords.</li>
+					<li>Try more general keywords.</li>
+					<li>Try fewer keywords.</li>
+				</ul>
+			</div>
+			{% else %}
+			{{ resultsHtml | safe}}
+			{% endif %} 
+			{% endif %}
+			{% if type1 == "torrents" %}
+			{% if numResults == 0 %}
+			<div class='torrentResults'>
+				<p> Your search - <em><b>{{term}}</b></em> - did not match any torrents.  </p>   <p style='margin-top:1em'><b>Suggestions:</b></p> 
+				<ul style='margin-left:1.3em;margin-bottom:2em'>
+					<li>Make sure that all words are spelled correctly.</li>
+					<li>Try different keywords.</li>
+					<li>Try more general keywords.</li>
+					<li>Try fewer keywords.</li>
+				</ul>
+			</div>
+			{% else %}
+			{{ resultsHtml | safe}}
+			{% endif %} 
+			{% endif %}	
+		</div>
+		<ul class="pagination center-align">
+		{{paginationContainer |safe}}	
+		</ul>
+		<br>
+		<br>
+		<div style="background-color: rgb(53, 133, 202);
+    border-top: 2px solid #04e63f;
+    position: fixed;
+    width: -webkit-fill-available;
+    bottom: 0px;">
+		<center style='color:#ffffff;'>Tarantula™ .  All rights reserved. © 2019</center>
+		</div>
+		</div>
+	</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+<script src='https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js'></script>
+<script type="text/javascript" src="static/js/script.js"></script>
+<!--Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
+{% if type1 == "web" %}
+<script src='static/particles/particles.min.js'></script>
+<script src='static/particles/config.js'></script>
+{% else %}
+{% endif %}
+</body>
+</html>
