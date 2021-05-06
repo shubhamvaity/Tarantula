@@ -1,9 +1,9 @@
 <h2 align="center">Tarantula</h2>
 
 <p align="center">
- 
+
   
- <img width=400px src="./static/images/logo-text.png" alt="Tarantula-text"></a>
+ <img width=400px src="./static/images/logo-text.png" alt="Tarantula-text">
 </p>
 
 <h3 align="center">An elegant search engine</h3>
