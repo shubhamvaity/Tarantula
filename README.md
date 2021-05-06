@@ -1,7 +1,7 @@
 <h2 align="center">Tarantula</h2>
 
 <p align="center">
-  <a href="" rel="noopener">
+ 
   
  <img width=400px src="./static/images/logo-text.png" alt="Tarantula-text"></a>
 </p>
