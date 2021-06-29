@@ -11,7 +11,7 @@
 ------------------------------------------
 
 # Our System
-- We have built our custom web rrawler which will crawl the WWW recursively in a DFS manner.
+- We have built our custom web crawler which will crawl the WWW recursively in a DFS manner.
 - The extracted data is stored in the database and then pre-processed and indexed.
 - The stored pages are assigned scores using metrics like location score, frequency score, inbound link score, distance score, & PageRank score.
 
